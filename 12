@@ -1,0 +1,24 @@
+import os
+from appium import webdriver
+
+# A 어플 실행을 위한 설정
+desired_caps = {}
+desired_caps['platformName'] = 'Android'
+desired_caps['platformVersion'] = '9'
+desired_caps['deviceName'] = 'ELD7N16B19003347'
+desired_caps['appPackage'] = 'com.thinkware.inaviair'
+desired_caps['appActivity'] = 'com.thinkware.inaviair.UIActivity'
+
+# Appium 서버와 세션 생성
+driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+
+# A 어플 실행 후 실행 확인
+if driver.is_app_installed('com.example.a'):
+    print('A 어플 실행 완료')
+    with open('ok.txt', 'w') as f:
+        f.write('ok')
+else:
+    print('A 어플이 설치되어 있지 않습니다.')
+
+# Appium 세션 종료
+driver.quit()

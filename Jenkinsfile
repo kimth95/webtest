@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Souce') {
       steps {
-        git 'https://github.com/kimth95/webtest'
+        git(url: 'https://github.com/kimth95/webtest', poll: true)
       }
     }
 
